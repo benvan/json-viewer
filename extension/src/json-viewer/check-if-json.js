@@ -3,7 +3,12 @@ var extractJSON = require('./extract-json');
 function getPreWithSource() {
   var childNodes = document.body.childNodes;
 
-  if (childNodes.length === 1) {
+  if (childNodes.length > 1){
+    document.body.normalize() // concatenates adjacent text nodes
+  }
+
+  if (childNodes.length == 1) {
+
     var childNode = childNodes[0];
     var nodeName = childNode.nodeName
     var textContent = childNode.textContent
